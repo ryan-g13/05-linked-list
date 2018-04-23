@@ -51,16 +51,18 @@ describe('This is a testing suite for the linked-list.js file to verify if input
   });
   test('#popvalue-works', () => {
     const testList = new LinkedList();
-    testList.insertAtEnd(13);
-    testList.insertAtEnd(17);
-    testList.insertAtEnd(19);
+    testList.insertAtHead(13);
+    testList.insertAtHead(17);
+    testList.insertAtHead(19);
+    console.log(testList, 'end');
+
 
     // Three edge case tests - head middle and tail being popped off
     expect(testList.pop(13)).toEqual(testList);
     expect(testList.pop(17)).toEqual(testList);
     expect(testList.pop(19)).toEqual(testList);
   });
-  test('#doublevalue-works', () => {
+  test('#mapvalue-works', () => {
     const testList = new LinkedList();
     testList.doubleMap(19);
     expect(testList.head.value).toEqual(19);

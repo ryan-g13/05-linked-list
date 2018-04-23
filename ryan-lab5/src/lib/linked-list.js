@@ -10,6 +10,8 @@ module.exports = class LinkedList {
   }
 
   // pop (from a position) methodology 
+  // O (n) = for space is linear with respect to input will grow as input grows. 
+  // O (n) = for time is going to linearly grow with the input.
   pop(position) {
     if (!this.head) {
       throw new Error('__ERROR__ List is empty');
@@ -34,26 +36,21 @@ module.exports = class LinkedList {
   }
 
   // Map functionality (currently written as a doubling value function)
-  doubleMap(value) {
-    const node = new Node2(value);
-
-    if (!this.head) {
-      this.head = node;
-      return this;
-    }
+  // O (n^2) = for space is 2 levels of operations per input will grow as input grows. 
+  // O (n^2) = for time is going to grow with the input. 
+  doubleMap(value, callback) {
+    const mapList = new Node2(value);
     let currentNode = this.head;
-    console.log(this.head.value);
     while (currentNode.next) {
-      currentNode.value *= 2;
+      mapList.insertAtEnd(callback(value));
       currentNode = currentNode.next;
     }
-    console.log(this.head.value);
-    currentNode.next = node;
-    return this;
   }
 
   // Pass in parameter to constructor creating/adding values to the existing node list. 
   // AKA splice @ 0
+  // O (n) = for space is linear with respect to input will grow as input grows. 
+  // O (n) = for time is going to linearly grow with the input.
   insertAtHead(value) {
     const node = new Node(value);
 
@@ -63,6 +60,8 @@ module.exports = class LinkedList {
   }
 
   // Pass in value to constructor and append value to the end of the linked list.
+  // O (n) = for space is linear with respect to input will grow as input grows. 
+  // O (n) = for time is going to linearly grow with the input.
   insertAtEnd(value) {
     const node = new Node(value);
 
@@ -79,6 +78,8 @@ module.exports = class LinkedList {
   }
 
   // search through linked list for particular value specified as parameter. 
+  // O (n) = for space is linear with respect to input will grow as input grows. 
+  // O (n) = for time is going to linearly grow with the input. 
   find(value) {
     if (!this.head) {
       throw new Error('__ERROR__ List is empty');
